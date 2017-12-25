@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BoxController : MonoBehaviour
 {
+    //True si una caja ha sido movida a la salida
+    public bool m_OnCross;
 
     //Impedimos el movimiento diagonal
     public bool Move(Vector2 direction)
@@ -17,7 +19,7 @@ public class BoxController : MonoBehaviour
         else
         {
             transform.Translate(direction);
-            //TestForOnCross();
+            TestForOnCross();
             return true;
         }
 
@@ -43,6 +45,23 @@ public class BoxController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    void TestForOnCross ()
+    {
+        GameObject[] crosses = GameObject.FindGameObjectsWithTag("Cross");
+        foreach (var cross in crosses)
+        {
+            if (transform.position.x == cross.transform.position.x && transform.position.y == cross.transform.position.y)
+            {
+                //Sobre una cruz
+                GetComponent<SpriteRenderer>().color = Color.green;
+                m_OnCross = true;
+                return;
+            }
+        }
+        GetComponent<SpriteRenderer>().color = Color.white;
+        m_OnCross = false;
     }
 	
 }
