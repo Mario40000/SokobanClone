@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         m_NextButton.SetActive(false);
         ResetScene();
+        
     }
 
     void Update ()
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             m_ReadyForInput = true;
         }
+        
     }
 
     //Reseteamos los datos estaticos
@@ -102,6 +104,12 @@ public class GameManager : MonoBehaviour
         DataReset();
         StartCoroutine(ResetSceneASync());
         StaticData.currentTime = Time.time;
+    }
+
+    //Volvemos al menu inicial
+    public void ReturnMenu ()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     //Corrutina para descargar el viejo nivel y cargar el nuevo
