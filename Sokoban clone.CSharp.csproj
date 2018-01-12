@@ -83,7 +83,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\StartScreenController.cs" />
     <Compile Include="Assets\Scripts\StaticData.cs" />
-    <Compile Include="Assets\Scripts\TileTextControler.cs" />
+    <Compile Include="Assets\Scripts\TileColorController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Levels.txt" />

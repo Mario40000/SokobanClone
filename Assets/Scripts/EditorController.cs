@@ -12,6 +12,8 @@ public class EditorController : MonoBehaviour
     public GameObject saveButton;
     public GameObject saveText;
 
+    public GameObject[] tiles;
+
     void Start ()
     {
         saveText.SetActive(false);
@@ -45,7 +47,7 @@ public class EditorController : MonoBehaviour
         exitButton.SetActive(false);
         saveButton.SetActive(false);
 
-        int contador = 1;
+        int contador = 0;
         string level = "";
 
         string path = "Assets/Resources/Levels.txt";
@@ -57,25 +59,27 @@ public class EditorController : MonoBehaviour
             
 
             //Leemos los dropText
-            foreach (GameObject child in GameObject.FindGameObjectsWithTag("Tiles"))
+            for (int i = 0;i < tiles.Length;i++)
             {
-                if (child.GetComponent<Dropdown>().captionText.Equals("Vacio"))
+                GameObject child = tiles[i];
+
+                if (child.GetComponent<Dropdown>().value == 0)
                 {
                     level += " ";
                 }
-                else if (child.GetComponent<Dropdown>().captionText.Equals("Player"))
+                else if (child.GetComponent<Dropdown>().value == 1)
                 {
                     level += "@";
                 }
-                else if (child.GetComponent<Dropdown>().captionText.Equals("Pared"))
+                else if (child.GetComponent<Dropdown>().value == 2)
                 {
                     level += "#";
                 }
-                else if (child.GetComponent<Dropdown>().captionText.Equals("Salida"))
+                else if (child.GetComponent<Dropdown>().value == 3)
                 {
                     level += ".";
                 }
-                else if (child.GetComponent<Dropdown>().captionText.Equals("Caja"))
+                else if (child.GetComponent<Dropdown>().value == 4)
                 {
                     level += "$";
                 }
@@ -85,7 +89,7 @@ public class EditorController : MonoBehaviour
                 if (contador == 12)
                 {
                     writer.WriteLine(level);
-                    contador = 1;
+                    contador = 0;
                     level = "";
                 }
 
