@@ -25,7 +25,7 @@ public class TileColorController : MonoBehaviour
     {
         if(dropDown.value == 0)
         {
-            ima.color = Color.gray;
+            ima.color = Color.white;
                 
         }
         else if(dropDown.value == 1)
